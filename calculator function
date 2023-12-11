@@ -1,0 +1,54 @@
+ #include <stdio.h>
+
+// Addition function
+int addition(int x, int y) {
+  return x + y;
+}
+
+// Subtraction function
+int subtraction(int x, int y) {
+  return x - y;
+}
+
+// Division function
+float division(int x, int y) {
+  return (float)x / y;
+}
+
+// Multiplication function
+int multiplication(int x, int y) {
+  return x * y;
+}
+
+int main() {
+  // Store four functions in an array
+  int (*operations[])(int, int) = {addition, subtraction, division, multiplication};
+
+  // Calculator function
+  int calculator(int (*operations[])(int, int)) {
+    int num1, num2, choice;
+
+    printf("Enter the first number: ");
+    scanf("%d", &num1);
+
+    printf("Enter the second number: ");
+    scanf("%d", &num2);
+
+    printf("Which one do you like to do?\n");
+    printf("1. Addition\n2. Subtraction\n3. Division\n4. Multiplication\n");
+    printf("Your choice: ");
+    scanf("%d", &choice);
+
+    // Call the appropriate function based on the user's choice
+    int result = operations[choice - 1](num1, num2);
+    return result;
+  }
+
+  // Perform the operation using the calculator
+  int result = calculator(operations);
+
+  // Print the result
+  printf("Result: %d\n", result);
+
+  return 0;
+}
